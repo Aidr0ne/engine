@@ -12,5 +12,5 @@ class Object:
         self.solid = solid
         self.transparent = transparent
         if sprite is not None:
-            self.sprite = pg.image.load(sprite)
-        else: self.sprite = None
+            self.image = pg.image.load(sprite)
+        else: self.image = None; print("Load fail")

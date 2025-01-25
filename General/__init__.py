@@ -1,3 +1,4 @@
-from grid import Grid2D
+from . import grid
+from . import objects
 
-__all__ = ["Grid2D"]
+__all__ = ["grid", "objects"]
