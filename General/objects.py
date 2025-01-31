@@ -1,13 +1,17 @@
 from ._object import Object
 from .camera import Camera
+import pygame as pg
+import sys
+
 
 class Player:
-    def __init__(self, x, y):
+    def __init__(self, x, y, keybind=None):
         self.x = x
         self.y = y
         self.camera: Camera = None
+        self.keybind = keybind
     
-    def attach_camera(self, camera):
+    def attach_camera(self, camera) -> None:
         self.camera = camera
 
     def update(self, grid):
@@ -15,6 +19,15 @@ class Player:
             self.camera.update(grid, self.x, self.y)
         else:
             raise Exception
+
+    def move(self):
+        for event in pg.event.get():
+            if event == pg.QUIT:
+                pg.exit()
+                sys.exit(1)
+
+
+
 
 
 

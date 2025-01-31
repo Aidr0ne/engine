@@ -26,11 +26,6 @@ class Camera:
         return [row[start_col:end_col] for row in self.grid[start_row:end_row]]
 
     def update(self, grid, x, y):
-        for event in pg.event.get():
-            if event == pg.QUIT:
-                pg.quit()
-                sys.exit()
-
             
         self.screen.fill("white")
 

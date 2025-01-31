@@ -16,6 +16,8 @@ enemey -- Front end
 
 Obstacle -- Front end
 
+Movement -- Front end
+
 ## Grid
 
 Holds chunk data assuming 3.
