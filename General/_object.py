@@ -14,3 +14,6 @@ class Object:
         if sprite is not None:
             self.image = pg.image.load(sprite)
         else: self.image = None; print("Load fail")
+
+    def solid(self):
+        return self.solid

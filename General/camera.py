@@ -25,7 +25,7 @@ class Camera:
         
         half_size = size // 2
         
-        subgrid = [[self.blank(0, 0) for _ in range(size)] for _ in range(size)]
+        subgrid = [[self.blank() for _ in range(size)] for _ in range(size)]
         
         for i in range(size):
             for j in range(size):
