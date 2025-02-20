@@ -3,7 +3,6 @@ from .camera import Camera
 import pygame as pg
 import pickle
 
-
 class Player:
     def __init__(self, x=0, y=0, physics=False, sprite=None):
         self.x = x  # X Position used for rendering ease of access
@@ -34,19 +33,8 @@ class Player:
             self.d,
             self.physics,
         ]
-
     def meta(self):
-        return [
-            "Name",
-            "Save Id",
-            "Sprite Path",
-            "x",
-            "y",
-            "dt",
-            "input Delay",
-            "Amount of dt passed For input check",
-            "If physics are enabled",
-        ]
+        return ["Name", "Save Id", "Sprite Path", "x", "y", "dt", "input Delay", "Amount of dt passed For input check", "If physics are enabled"]
 
     def load(self, args):
         self.name = args[0]
@@ -174,29 +162,15 @@ class Air(Object):
         self.hp -= 1
 
     def load(self, args):
-        (
-            self.name,
-            self.save_id,
-            self.sprite_path,
-            self.hp,
-            self.transparent,
-            self.solid,
-        ) = args
+        self.name, self.save_id, self.sprite_path, self.hp, self.transparent, self.solid = args
         self.__setstate__()
 
     def save(self):
-        return [
-            self.name,
-            self.save_id,
-            self.sprite_path,
-            self.hp,
-            self.transparent,
-            self.solid,
-        ]
-
+        return [self.name, self.save_id, self.sprite_path, self.hp, self.transparent, self.solid]
+    
     def meta(self):
         return ["Name", "Save Id", "Sprite Path", "Hp", "Transparent", "Solid"]
-
+    
     def use(self, level, x, y):
         return level, x, y
 
@@ -210,27 +184,13 @@ class Test(Object):
         self.hp = 0
 
     def save(self):
-        return [
-            self.name,
-            self.save_id,
-            self.sprite_path,
-            self.hp,
-            self.solid,
-            self.transparent,
-        ]
-
+        return [self.name, self.save_id, self.sprite_path, self.hp, self.solid, self.transparent]
+    
     def meta(self):
         return []
 
     def load(self, args):
-        (
-            self.name,
-            self.save_id,
-            self.sprite_path,
-            self.hp,
-            self.solid,
-            self.transparent,
-        ) = args
+        self.name, self.save_id, self.sprite_path, self.hp, self.solid, self.transparent = args
         self.__setstate__()
 
     def hit(self):
@@ -262,8 +222,7 @@ class Ground(Object):
         self.sprite_path = sprite
 
     def save(self):
-        return [
-            self.name,
+        return [self.name, 
             self.save_id,
             self.sprite_path,
             self.hp,
@@ -272,18 +231,9 @@ class Ground(Object):
             self.x,
             self.y,
         ]
-
+    
     def meta(self):
-        return [
-            "Name",
-            "Save Id",
-            "Sprite Path",
-            "Hp",
-            "Solid",
-            "Transparent",
-            "X",
-            "Y",
-        ]
+        return ["Name", "Save Id", "Sprite Path", "Hp", "Solid", "Transparent", "X", "Y"]
 
     def load(self, args):
         (
@@ -313,24 +263,13 @@ class Ground(Object):
 
     def health(self):
         return self.hp
-
+    
     def use(self, level, x, y):
         return level, x, y
 
 
 class Door:
-    def __init__(
-        self,
-        name="Door",
-        x=0,
-        y=0,
-        tx=0,
-        ty=0,
-        target_file="",
-        sprite_path="",
-        save_dict=None,
-        locked=False,
-    ):
+    def __init__(self, name="Door", x=0, y=0, tx=0, ty=0, target_file="", sprite_path="", save_dict=None, locked=False):
         self.x = x
         self.y = y
         self.tx = tx
@@ -347,49 +286,13 @@ class Door:
         self.save_dict = save_dict
 
     def save(self):
-        return [
-            self.name,
-            self.save_id,
-            self.sprite_path,
-            self.x,
-            self.y,
-            self.tx,
-            self.ty,
-            self.locked,
-            self.hp,
-            self.target_file,
-            self.save_dict,
-        ]
-
+        return [self.name, self.save_id, self.sprite_path, self.x, self.y, self.tx, self.ty, self.locked, self.hp, self.target_file, self.save_dict]
+    
     def meta(self):
-        return [
-            "Name",
-            "Save Id",
-            "Sprite Path",
-            "X",
-            "Y",
-            "Target X",
-            "Target Y",
-            "Locked",
-            "Hp",
-            "Target File",
-            "Save dictionary",
-        ]
-
+        return ["Name", "Save Id", "Sprite Path", "X", "Y", "Target X", "Target Y", "Locked", "Hp", "Target File", "Save dictionary"]
+    
     def load(self, args):
-        (
-            self.name,
-            self.save_id,
-            self.sprite_path,
-            self.x,
-            self.y,
-            self.tx,
-            self.ty,
-            self.locked,
-            self.hp,
-            self.target_file,
-            self.save_dict,
-        ) = args
+        self.name, self.save_id, self.sprite_path, self.x, self.y, self.tx, self.ty, self.locked, self.hp, self.target_file, self.save_dict = args
         self.__setstate__()
 
     def use(self, level, x, y):
